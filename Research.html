@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffe6e6;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            color: #ff3366;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #ff6699;
+            color: white;
+            transition: background 0.3s ease;
+            position: relative;
+        }
+        button:hover {
+            background-color: #ff3366;
+        }
+        #no-btn {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1>Will you be my valentine, Angela Nazarene?</h1>
+    <div>
+        <button id="yes-btn">Yes</button>
+        <button id="no-btn">No</button>
+    </div>
+
+    <script>
+        const yesButton = document.getElementById('yes-btn');
+        const noButton = document.getElementById('no-btn');
+
+        yesButton.addEventListener('click', () => {
+            document.body.innerHTML = '<h1>I knew you\'d say yes! Happy Valentine\'s Day, bub. I love you sofer! :></h1>';
+        });
+
+        function moveNoButton() {
+            const maxX = window.innerWidth - noButton.offsetWidth - 50;
+            const maxY = window.innerHeight - noButton.offsetHeight - 50;
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        }
+
+        // 🖥️ Desktop: Moves on hover
+        noButton.addEventListener('mouseover', moveNoButton);
+
+        // 📱 Mobile Fix: Moves on touch, prevents accidental tap
+        noButton.addEventListener('touchstart', (event) => {
+            event.preventDefault(); // Prevents accidental click
+            moveNoButton();
+        }, { passive: false });
+
+        // 🚨 If somehow tapped, move instantly
+        noButton.addEventListener('click', (event) => {
+            event.preventDefault(); // Stops the click from working
+            moveNoButton();
+        });
+        <meta property="og:title" content="Be My Valentine?"/>
+<meta property="og:description" content="Will you be my valentine, Angela Nazarene?"/>
+<meta property="og:image" content="https://example.com/image.jpg"/>
+<meta property="og:url" content="https://yourwebsite.com"/>
+<meta name="twitter:card" content="summary_large_image"/>
+    </script>
+</body>
+</html>
